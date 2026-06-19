@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Playfair_Display, Barlow_Condensed } from "next/font/google";
+import { Playfair_Display, Inter } from "next/font/google";
 
 import { ThemeProvider } from "@/components/theme-provider";
 import "./globals.css";
@@ -12,11 +12,10 @@ const playfairDisplay = Playfair_Display({
   weight: ["400", "500", "600", "700"],
 });
 
-// Proxima Nova Condensed alternative — geometric condensed sans-serif
-const barlowCondensed = Barlow_Condensed({
+// Body / non-title text
+const inter = Inter({
   variable: "--font-sans",
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600"],
 });
 
 export const metadata: Metadata = {
@@ -42,7 +41,7 @@ export default function RootLayout({
   return (
     <html lang="hu" suppressHydrationWarning>
       <body
-        className={`${playfairDisplay.variable} ${barlowCondensed.variable} min-h-dvh font-sans antialiased`}
+        className={`${playfairDisplay.variable} ${inter.variable} min-h-dvh font-sans antialiased`}
       >
         <ThemeProvider
           attribute="class"
