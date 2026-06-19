@@ -37,7 +37,7 @@ export const tourDays: TourDay[] = [
     shortLabel: "P",
     date: "jún. 26.",
     subtitle: "Érkezés, lazítós este",
-    routeColor: "#e11d48",
+    routeColor: "#93c5fd",
     stops: [
       {
         id: "f-delipu",
@@ -84,7 +84,7 @@ export const tourDays: TourDay[] = [
     shortLabel: "Szo",
     date: "jún. 27.",
     subtitle: "A nagy nap + hajó",
-    routeColor: "#2563eb",
+    routeColor: "#3b82f6",
     stops: [
       {
         id: "s-espresso",
@@ -177,7 +177,7 @@ export const tourDays: TourDay[] = [
     shortLabel: "V",
     date: "jún. 28.",
     subtitle: "Indulás haza — szoros időzítés!",
-    routeColor: "#d97706",
+    routeColor: "#1d4ed8",
     stops: [
       {
         id: "u-madal",
