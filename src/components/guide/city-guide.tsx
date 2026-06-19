@@ -1,0 +1,173 @@
+"use client";
+
+import { useMemo, useState } from "react";
+import { ModeToggle } from "@/components/mode-toggle";
+import { StopCard } from "@/components/guide/stop-card";
+import { RouteMapDrawer } from "@/components/guide/route-map-drawer";
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
+import { Badge } from "@/components/ui/badge";
+import {
+  Card,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { ScrollArea } from "@/components/ui/scroll-area";
+import { Separator } from "@/components/ui/separator";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { practicalTips, tourDays } from "@/lib/tour-data";
+import { cn } from "@/lib/utils";
+import { CalendarDays, Info, MapPinned, Sparkles } from "lucide-react";
+
+export function CityGuide() {
+  const [activeDayId, setActiveDayId] = useState(tourDays[1]?.id ?? tourDays[0].id);
+  const [selectedStopId, setSelectedStopId] = useState<string | null>(null);
+  const [mapOpen, setMapOpen] = useState(true);
+
+  const activeDay = useMemo(
+    () => tourDays.find((day) => day.id === activeDayId) ?? tourDays[0],
+    [activeDayId],
+  );
+
+  const handleDayChange = (dayId: string) => {
+    setActiveDayId(dayId);
+    const day = tourDays.find((item) => item.id === dayId);
+    setSelectedStopId(day?.stops[0]?.id ?? null);
+  };
+
+  const handleSelectStop = (stopId: string) => {
+    setSelectedStopId(stopId);
+    document.getElementById(`stop-${stopId}`)?.scrollIntoView({
+      behavior: "smooth",
+      block: "center",
+    });
+  };
+
+  return (
+    <div
+      className={cn(
+        "bg-muted/30 min-h-dvh transition-[padding] duration-300",
+        mapOpen
+          ? "pb-[38dvh]"
+          : "pb-[calc(5rem+env(safe-area-inset-bottom))]",
+      )}
+    >
+      <header className="bg-background/80 sticky top-0 z-40 border-b backdrop-blur-sm supports-[backdrop-filter]:bg-background/60">
+        <div className="mx-auto max-w-lg px-4 py-4">
+          <div className="mb-4 flex items-start justify-between gap-3">
+            <div className="space-y-1">
+              <Badge variant="secondary" className="gap-1.5">
+                <MapPinned />
+                Interaktív városi útmutató
+              </Badge>
+              <h1 className="text-2xl font-semibold tracking-tight">
+                Budapest túra
+              </h1>
+              <p className="text-muted-foreground text-sm">
+                4 lány hosszú hétvégéje · jún. 26–28.
+              </p>
+            </div>
+            <div className="flex shrink-0 items-center gap-2">
+              <ModeToggle />
+              <Badge variant="outline" className="gap-1.5">
+                <CalendarDays />
+                2026
+              </Badge>
+            </div>
+          </div>
+
+          <Tabs value={activeDayId} onValueChange={handleDayChange}>
+            <TabsList className="grid h-auto w-full grid-cols-3">
+              {tourDays.map((day) => (
+                <TabsTrigger
+                  key={day.id}
+                  value={day.id}
+                  className="flex flex-col gap-0.5 py-2.5 text-xs"
+                >
+                  <span className="font-medium">{day.label}</span>
+                  <span className="text-muted-foreground text-[10px]">
+                    {day.date}
+                  </span>
+                </TabsTrigger>
+              ))}
+            </TabsList>
+          </Tabs>
+        </div>
+      </header>
+
+      <main className="mx-auto max-w-lg px-4 py-5">
+        <Tabs value={activeDayId} onValueChange={handleDayChange}>
+          {tourDays.map((day) => (
+            <TabsContent key={day.id} value={day.id} className="mt-0 space-y-5">
+              <Card size="sm" className="overflow-hidden">
+                <CardHeader className="gap-2 pb-0">
+                  <div className="flex items-center gap-2">
+                    <span
+                      className="size-2 rounded-full"
+                      style={{ backgroundColor: day.routeColor }}
+                    />
+                    <CardTitle className="text-base">{day.subtitle}</CardTitle>
+                  </div>
+                  <CardDescription>
+                    {day.stops.length} megálló — koppints egy programra, a térkép
+                    odafókuszál
+                  </CardDescription>
+                </CardHeader>
+              </Card>
+
+              <div className="space-y-0">
+                {day.stops.map((stop, index) => (
+                  <div key={stop.id} id={`stop-${stop.id}`}>
+                    <StopCard
+                      stop={stop}
+                      index={index}
+                      routeColor={day.routeColor}
+                      selected={selectedStopId === stop.id}
+                      isLast={index === day.stops.length - 1}
+                      onSelect={() => handleSelectStop(stop.id)}
+                    />
+                  </div>
+                ))}
+              </div>
+            </TabsContent>
+          ))}
+        </Tabs>
+
+        <Separator className="my-6" />
+
+        <section className="space-y-3 pb-6">
+          <div className="flex items-center gap-2">
+            <Sparkles className="text-muted-foreground size-4" />
+            <h2 className="text-sm font-medium">Hasznos infók</h2>
+          </div>
+          <ScrollArea className="max-h-52">
+            <div className="space-y-2 pr-3">
+              {practicalTips.map((tip) => (
+                <Alert key={tip}>
+                  <Info />
+                  <AlertDescription>{tip}</AlertDescription>
+                </Alert>
+              ))}
+            </div>
+          </ScrollArea>
+        </section>
+
+        <Alert>
+          <MapPinned />
+          <AlertTitle>Szállás bázis</AlertTitle>
+          <AlertDescription>
+            Deák Ferenc tér / Király utca — szinte minden 5–15 perc gyalog.
+          </AlertDescription>
+        </Alert>
+      </main>
+
+      <RouteMapDrawer
+        day={activeDay}
+        selectedStopId={selectedStopId ?? activeDay.stops[0]?.id ?? null}
+        onSelectStop={handleSelectStop}
+        open={mapOpen}
+        onOpenChange={setMapOpen}
+      />
+    </div>
+  );
+}
