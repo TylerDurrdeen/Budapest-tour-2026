@@ -60,7 +60,7 @@ export function CityGuide() {
                 <MapPinned />
                 Interaktív városi útmutató
               </Badge>
-              <h1 className="text-2xl font-semibold tracking-tight">
+              <h1 className="font-heading text-2xl font-semibold italic tracking-tight">
                 Budapest túra
               </h1>
               <p className="text-muted-foreground text-sm">
@@ -106,7 +106,7 @@ export function CityGuide() {
                       className="size-2 rounded-full"
                       style={{ backgroundColor: day.routeColor }}
                     />
-                    <CardTitle className="text-base">{day.subtitle}</CardTitle>
+                    <CardTitle className="font-heading text-base italic">{day.subtitle}</CardTitle>
                   </div>
                   <CardDescription>
                     {day.stops.length} megálló — koppints egy programra, a térkép
@@ -138,7 +138,7 @@ export function CityGuide() {
         <section className="space-y-3 pb-6">
           <div className="flex items-center gap-2">
             <Sparkles className="text-muted-foreground size-4" />
-            <h2 className="text-sm font-medium">Hasznos infók</h2>
+            <h2 className="font-heading text-sm font-medium italic">Hasznos infók</h2>
           </div>
           <ScrollArea className="max-h-52">
             <div className="space-y-2 pr-3">
