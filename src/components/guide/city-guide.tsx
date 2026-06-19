@@ -60,24 +60,28 @@ export function CityGuide() {
             <ModeToggle />
           </div>
 
-          <Tabs value={activeDayId} onValueChange={handleDayChange}>
-            <TabsList className="grid h-auto w-full grid-cols-3 p-1">
-              {tourDays.map((day) => (
-                <TabsTrigger
-                  key={day.id}
-                  value={day.id}
-                  className="group flex h-auto flex-col items-center gap-1 py-3"
-                >
-                  <span className="font-heading text-sm font-semibold italic leading-none">
-                    {day.label}
-                  </span>
-                  <span className="text-[11px] leading-none opacity-50 transition-opacity group-data-active:opacity-80">
-                    {day.date}
-                  </span>
-                </TabsTrigger>
-              ))}
-            </TabsList>
-          </Tabs>
+          <div className="grid grid-cols-3 gap-1 rounded-lg bg-muted p-1">
+            {tourDays.map((day) => (
+              <button
+                key={day.id}
+                type="button"
+                onClick={() => handleDayChange(day.id)}
+                className={cn(
+                  "flex flex-col items-center gap-1 rounded-md py-2.5 transition-all",
+                  activeDayId === day.id
+                    ? "bg-background text-foreground shadow-sm"
+                    : "text-muted-foreground hover:text-foreground/80",
+                )}
+              >
+                <span className="font-heading text-sm font-semibold italic leading-none">
+                  {day.label}
+                </span>
+                <span className="text-[10px] leading-none opacity-60">
+                  {day.date}
+                </span>
+              </button>
+            ))}
+          </div>
         </div>
       </header>
 
