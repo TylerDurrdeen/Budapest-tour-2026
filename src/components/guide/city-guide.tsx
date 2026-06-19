@@ -61,15 +61,22 @@ export function CityGuide() {
           </div>
 
           <Tabs value={activeDayId} onValueChange={handleDayChange}>
-            <TabsList className="grid h-auto w-full grid-cols-3 gap-1 p-1">
+            <TabsList className="grid h-auto w-full grid-cols-3 p-1">
               {tourDays.map((day) => (
                 <TabsTrigger
                   key={day.id}
                   value={day.id}
-                  className="flex h-auto flex-col gap-0.5 py-2.5"
+                  className="group flex h-auto flex-col items-center gap-1 py-3"
                 >
-                  <span className="text-sm font-semibold leading-none">{day.label}</span>
-                  <span className="text-[10px] leading-none opacity-60">{day.date}</span>
+                  <span className="font-heading text-sm font-semibold italic leading-none">
+                    {day.label}
+                  </span>
+                  <span
+                    className="text-[11px] leading-none opacity-50 transition-opacity group-data-active:opacity-90"
+                    style={{ color: day.routeColor }}
+                  >
+                    {day.date}
+                  </span>
                 </TabsTrigger>
               ))}
             </TabsList>
