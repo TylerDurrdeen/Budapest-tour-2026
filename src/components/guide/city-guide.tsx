@@ -5,7 +5,6 @@ import { ModeToggle } from "@/components/mode-toggle";
 import { StopCard } from "@/components/guide/stop-card";
 import { RouteMapDrawer } from "@/components/guide/route-map-drawer";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
-import { Badge } from "@/components/ui/badge";
 import {
   Card,
   CardDescription,
@@ -17,7 +16,7 @@ import { Separator } from "@/components/ui/separator";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { practicalTips, tourDays } from "@/lib/tour-data";
 import { cn } from "@/lib/utils";
-import { CalendarDays, Info, MapPinned, Sparkles } from "lucide-react";
+import { Info, MapPinned, Sparkles } from "lucide-react";
 
 export function CityGuide() {
   const [activeDayId, setActiveDayId] = useState(tourDays[1]?.id ?? tourDays[0].id);
@@ -53,41 +52,24 @@ export function CityGuide() {
       )}
     >
       <header className="bg-background/80 sticky top-0 z-40 border-b backdrop-blur-sm supports-[backdrop-filter]:bg-background/60">
-        <div className="mx-auto max-w-lg px-4 py-4">
-          <div className="mb-4 flex items-start justify-between gap-3">
-            <div className="space-y-1">
-              <Badge variant="secondary" className="gap-1.5">
-                <MapPinned />
-                Interaktív városi útmutató
-              </Badge>
-              <h1 className="font-heading text-2xl font-semibold italic tracking-tight">
-                Budapest túra
-              </h1>
-              <p className="text-muted-foreground text-sm">
-                4 lány hosszú hétvégéje · jún. 26–28.
-              </p>
-            </div>
-            <div className="flex shrink-0 items-center gap-2">
-              <ModeToggle />
-              <Badge variant="outline" className="gap-1.5">
-                <CalendarDays />
-                2026
-              </Badge>
-            </div>
+        <div className="mx-auto max-w-lg px-4 pt-4 pb-3">
+          <div className="mb-3 flex items-center justify-between gap-3">
+            <h1 className="font-heading text-2xl font-semibold italic tracking-tight">
+              Budapest túra
+            </h1>
+            <ModeToggle />
           </div>
 
           <Tabs value={activeDayId} onValueChange={handleDayChange}>
-            <TabsList className="grid h-auto w-full grid-cols-3">
+            <TabsList className="grid h-auto w-full grid-cols-3 gap-1 p-1">
               {tourDays.map((day) => (
                 <TabsTrigger
                   key={day.id}
                   value={day.id}
-                  className="flex flex-col gap-0.5 py-2.5 text-xs"
+                  className="flex h-auto flex-col gap-0.5 py-2.5"
                 >
-                  <span className="font-medium">{day.label}</span>
-                  <span className="text-muted-foreground text-[10px]">
-                    {day.date}
-                  </span>
+                  <span className="text-sm font-semibold leading-none">{day.label}</span>
+                  <span className="text-[10px] leading-none opacity-60">{day.date}</span>
                 </TabsTrigger>
               ))}
             </TabsList>
