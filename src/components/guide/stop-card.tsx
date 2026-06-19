@@ -10,32 +10,11 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import {
-  categoryLabels,
   type StopCategory,
   type TourStop,
 } from "@/lib/tour-data";
 import { cn } from "@/lib/utils";
-import {
-  Bus,
-  Coffee,
-  Landmark,
-  Lightbulb,
-  MapPin,
-  Moon,
-  Plane,
-  ShoppingBag,
-  Sparkles,
-} from "lucide-react";
-
-const categoryIcons: Record<StopCategory, typeof MapPin> = {
-  accommodation: MapPin,
-  food: Coffee,
-  culture: Landmark,
-  nightlife: Moon,
-  transport: Bus,
-  activity: Sparkles,
-  shopping: ShoppingBag,
-};
+import { Lightbulb } from "lucide-react";
 
 type StopCardProps = {
   stop: TourStop;
@@ -54,11 +33,6 @@ export function StopCard({
   isLast,
   onSelect,
 }: StopCardProps) {
-  const Icon =
-    stop.category === "transport" && stop.title.includes("reptér")
-      ? Plane
-      : categoryIcons[stop.category];
-
   return (
     <div className="relative flex items-start gap-3">
       {/* Timeline column */}
@@ -97,15 +71,11 @@ export function StopCard({
             }
           >
             <CardHeader className="gap-2 pb-0">
-              <div className="flex flex-wrap items-center gap-2">
-                <Badge variant="outline" className="font-mono text-[10px]">
-                  {stop.time}
-                </Badge>
-                <Badge variant="secondary" className="gap-1">
-                  <Icon />
-                  {categoryLabels[stop.category]}
-                </Badge>
-              </div>
+            <div className="flex items-center gap-2">
+              <Badge variant="outline" className="font-mono text-[10px]">
+                {stop.time}
+              </Badge>
+            </div>
               <CardTitle className="font-heading font-bold">{stop.title}</CardTitle>
               {stop.description && (
                 <CardDescription className="leading-relaxed">
