@@ -5,12 +5,6 @@ import { ModeToggle } from "@/components/mode-toggle";
 import { StopCard } from "@/components/guide/stop-card";
 import { RouteMapDrawer } from "@/components/guide/route-map-drawer";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
-import {
-  Card,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Separator } from "@/components/ui/separator";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -88,22 +82,7 @@ export function CityGuide() {
       <main className="mx-auto max-w-lg px-4 pt-3 pb-5">
         <Tabs value={activeDayId} onValueChange={handleDayChange}>
           {tourDays.map((day) => (
-            <TabsContent key={day.id} value={day.id} className="mt-0 space-y-2">
-              <Card size="sm" className="overflow-hidden">
-                <CardHeader className="gap-1 py-3">
-                  <div className="flex items-center gap-2">
-                    <span
-                      className="size-2 rounded-full"
-                      style={{ backgroundColor: day.routeColor }}
-                    />
-                    <CardTitle className="font-heading font-bold text-base">{day.subtitle}</CardTitle>
-                  </div>
-                  <CardDescription>
-                    {day.stops.length} megálló — koppints egy programra, a térkép odafókuszál
-                  </CardDescription>
-                </CardHeader>
-              </Card>
-
+            <TabsContent key={day.id} value={day.id} className="mt-0">
               <div className="space-y-0">
                 {day.stops.map((stop, index) => (
                   <div key={stop.id} id={`stop-${stop.id}`}>
