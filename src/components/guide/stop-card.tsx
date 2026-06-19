@@ -106,7 +106,7 @@ export function StopCard({
                   {categoryLabels[stop.category]}
                 </Badge>
               </div>
-              <CardTitle className="font-heading italic">{stop.title}</CardTitle>
+              <CardTitle className="font-heading">{stop.title}</CardTitle>
               {stop.description && (
                 <CardDescription className="leading-relaxed">
                   {stop.description}

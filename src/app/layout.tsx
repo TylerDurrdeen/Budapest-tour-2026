@@ -1,15 +1,13 @@
 import type { Metadata, Viewport } from "next";
-import { Playfair_Display, Inter } from "next/font/google";
+import { Fjalla_One, Inter } from "next/font/google";
 
 import { ThemeProvider } from "@/components/theme-provider";
 import "./globals.css";
 
-// Sailors Slant alternative — elegant serif display with italic slant
-const playfairDisplay = Playfair_Display({
+const fjallaOne = Fjalla_One({
   variable: "--font-heading",
   subsets: ["latin"],
-  style: ["normal", "italic"],
-  weight: ["400", "500", "600", "700"],
+  weight: "400",
 });
 
 // Body / non-title text
@@ -41,7 +39,7 @@ export default function RootLayout({
   return (
     <html lang="hu" suppressHydrationWarning>
       <body
-        className={`${playfairDisplay.variable} ${inter.variable} min-h-dvh font-sans antialiased`}
+        className={`${fjallaOne.variable} ${inter.variable} min-h-dvh font-sans antialiased`}
       >
         <ThemeProvider
           attribute="class"
