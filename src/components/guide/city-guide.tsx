@@ -54,7 +54,7 @@ export function CityGuide() {
       <header className="bg-background/80 sticky top-0 z-40 border-b backdrop-blur-sm supports-[backdrop-filter]:bg-background/60">
         <div className="mx-auto max-w-lg px-4 pt-4 pb-3">
           <div className="mb-3 flex items-center justify-between gap-3">
-            <h1 className="font-heading text-2xl tracking-tight">
+            <h1 className="font-heading text-2xl font-bold tracking-tight">
               Budapest túra
             </h1>
             <ModeToggle />
@@ -73,7 +73,7 @@ export function CityGuide() {
                     : "text-muted-foreground hover:text-foreground/80",
                 )}
               >
-                <span className="font-heading text-sm leading-none">
+                <span className="font-heading text-sm font-bold leading-none">
                   {day.label}
                 </span>
                 <span className="text-[10px] leading-none opacity-60">
@@ -96,7 +96,7 @@ export function CityGuide() {
                       className="size-2 rounded-full"
                       style={{ backgroundColor: day.routeColor }}
                     />
-                    <CardTitle className="font-heading text-base">{day.subtitle}</CardTitle>
+                    <CardTitle className="font-heading font-bold text-base">{day.subtitle}</CardTitle>
                   </div>
                   <CardDescription>
                     {day.stops.length} megálló — koppints egy programra, a térkép odafókuszál
@@ -127,7 +127,7 @@ export function CityGuide() {
         <section className="space-y-3 pb-6">
           <div className="flex items-center gap-2">
             <Sparkles className="text-muted-foreground size-4" />
-            <h2 className="font-heading text-sm">Hasznos infók</h2>
+            <h2 className="font-heading text-sm font-bold">Hasznos infók</h2>
           </div>
           <ScrollArea className="max-h-52">
             <div className="space-y-2 pr-3">
