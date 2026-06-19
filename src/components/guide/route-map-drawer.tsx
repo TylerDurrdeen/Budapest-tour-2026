@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
-import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import {
   Drawer,
@@ -170,13 +169,6 @@ export function RouteMapDrawer({
             >
               <MapPinned className="size-4" />
               Térkép megnyitása
-              <Badge
-                variant="secondary"
-                className="ml-1 h-5 px-1.5 text-[10px]"
-                style={{ color: day.routeColor }}
-              >
-                {day.stops.length} megálló
-              </Badge>
             </Button>
           </div>
         </div>
