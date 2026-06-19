@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import {
@@ -16,6 +16,7 @@ import {
   MapControls,
   MapMarker,
   MapRoute,
+  MapUserLocation,
   MarkerContent,
   MarkerTooltip,
   useMap,
@@ -54,6 +55,11 @@ function RouteMapContent({
   selectedStopId,
   onSelectStop,
 }: Pick<RouteMapDrawerProps, "day" | "selectedStopId" | "onSelectStop">) {
+  const [userLocation, setUserLocation] = useState<{
+    longitude: number;
+    latitude: number;
+  } | null>(null);
+
   const routeCoordinates = useMemo(
     () => day.stops.map((stop) => [stop.lng, stop.lat] as [number, number]),
     [day.stops],
@@ -111,7 +117,18 @@ function RouteMapContent({
           </MapMarker>
         );
       })}
-      <MapControls showZoom showLocate />
+      {userLocation && (
+        <MapUserLocation
+          longitude={userLocation.longitude}
+          latitude={userLocation.latitude}
+        />
+      )}
+      <MapControls
+        showZoom
+        showLocate
+        liveTracking
+        onLocate={setUserLocation}
+      />
     </Map>
   );
 }

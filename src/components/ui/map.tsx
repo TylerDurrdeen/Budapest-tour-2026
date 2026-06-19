@@ -16,7 +16,7 @@ import {
   type ReactNode,
 } from "react";
 import { createPortal } from "react-dom";
-import { X, Minus, Plus, Locate, Maximize, Loader2 } from "lucide-react";
+import { X, Minus, Plus, Locate, LocateFixed, Maximize, Loader2 } from "lucide-react";
 
 import { cn } from "@/lib/utils";
 
@@ -725,9 +725,14 @@ type MapControlsProps = {
   showLocate?: boolean;
   /** Show fullscreen toggle button (default: false) */
   showFullscreen?: boolean;
+  /**
+   * When true, the locate button uses watchPosition for continuous live tracking.
+   * Clicking the button again stops tracking. (default: false)
+   */
+  liveTracking?: boolean;
   /** Additional CSS classes for the controls container */
   className?: string;
-  /** Callback with user coordinates when located */
+  /** Callback fired with user coordinates on each location update */
   onLocate?: (coords: { longitude: number; latitude: number }) => void;
 };
 
@@ -782,11 +787,32 @@ function MapControls({
   showCompass = false,
   showLocate = false,
   showFullscreen = false,
+  liveTracking = false,
   className,
   onLocate,
 }: MapControlsProps) {
   const { map } = useMap();
   const [waitingForLocation, setWaitingForLocation] = useState(false);
+  const [isTracking, setIsTracking] = useState(false);
+  const watchIdRef = useRef<number | null>(null);
+  const hasFlewRef = useRef(false);
+
+  useEffect(() => {
+    return () => {
+      if (watchIdRef.current !== null) {
+        navigator.geolocation.clearWatch(watchIdRef.current);
+      }
+    };
+  }, []);
+
+  const stopTracking = useCallback(() => {
+    if (watchIdRef.current !== null) {
+      navigator.geolocation.clearWatch(watchIdRef.current);
+      watchIdRef.current = null;
+    }
+    hasFlewRef.current = false;
+    setIsTracking(false);
+  }, []);
 
   const handleZoomIn = useCallback(() => {
     map?.zoomTo(map.getZoom() + 1, { duration: 300 });
@@ -801,8 +827,44 @@ function MapControls({
   }, [map]);
 
   const handleLocate = useCallback(() => {
-    setWaitingForLocation(true);
-    if ("geolocation" in navigator) {
+    if (!("geolocation" in navigator)) return;
+
+    if (liveTracking) {
+      if (isTracking) {
+        stopTracking();
+        return;
+      }
+
+      setWaitingForLocation(true);
+      hasFlewRef.current = false;
+
+      watchIdRef.current = navigator.geolocation.watchPosition(
+        (pos) => {
+          const coords = {
+            longitude: pos.coords.longitude,
+            latitude: pos.coords.latitude,
+          };
+          if (!hasFlewRef.current) {
+            map?.flyTo({
+              center: [coords.longitude, coords.latitude],
+              zoom: 15,
+              duration: 1500,
+            });
+            hasFlewRef.current = true;
+            setIsTracking(true);
+            setWaitingForLocation(false);
+          }
+          onLocate?.(coords);
+        },
+        (error) => {
+          console.error("Error getting location:", error);
+          setWaitingForLocation(false);
+          setIsTracking(false);
+        },
+        { enableHighAccuracy: true, maximumAge: 5000 },
+      );
+    } else {
+      setWaitingForLocation(true);
       navigator.geolocation.getCurrentPosition(
         (pos) => {
           const coords = {
@@ -823,7 +885,7 @@ function MapControls({
         },
       );
     }
-  }, [map, onLocate]);
+  }, [map, onLocate, liveTracking, isTracking, stopTracking]);
 
   const handleFullscreen = useCallback(() => {
     const container = map?.getContainer();
@@ -862,11 +924,13 @@ function MapControls({
         <ControlGroup>
           <ControlButton
             onClick={handleLocate}
-            label="Find my location"
+            label={isTracking ? "Stop tracking location" : "Find my location"}
             disabled={waitingForLocation}
           >
             {waitingForLocation ? (
               <Loader2 className="size-4 animate-spin" />
+            ) : isTracking ? (
+              <LocateFixed className="size-4 text-blue-500" />
             ) : (
               <Locate className="size-4" />
             )}
@@ -1826,6 +1890,27 @@ function MapClusterLayer<
   return null;
 }
 
+type MapUserLocationProps = {
+  /** Longitude of the user's current position */
+  longitude: number;
+  /** Latitude of the user's current position */
+  latitude: number;
+};
+
+/** Renders a live pulsing blue dot at the user's current GPS position. */
+function MapUserLocation({ longitude, latitude }: MapUserLocationProps) {
+  return (
+    <MapMarker longitude={longitude} latitude={latitude}>
+      <MarkerContent>
+        <div className="relative flex size-10 items-center justify-center">
+          <span className="absolute inset-0 animate-ping rounded-full bg-blue-400/40" />
+          <span className="relative size-4 rounded-full border-2 border-white bg-blue-500 shadow-lg" />
+        </div>
+      </MarkerContent>
+    </MapMarker>
+  );
+}
+
 export {
   Map,
   useMap,
@@ -1839,6 +1924,7 @@ export {
   MapRoute,
   MapArc,
   MapClusterLayer,
+  MapUserLocation,
 };
 
 export type { MapRef, MapViewport, MapArcDatum, MapArcEvent };
