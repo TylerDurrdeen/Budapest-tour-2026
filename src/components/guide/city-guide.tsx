@@ -71,10 +71,7 @@ export function CityGuide() {
                   <span className="font-heading text-sm font-semibold italic leading-none">
                     {day.label}
                   </span>
-                  <span
-                    className="text-[11px] leading-none opacity-50 transition-opacity group-data-active:opacity-90"
-                    style={{ color: day.routeColor }}
-                  >
+                  <span className="text-[11px] leading-none opacity-50 transition-opacity group-data-active:opacity-80">
                     {day.date}
                   </span>
                 </TabsTrigger>
