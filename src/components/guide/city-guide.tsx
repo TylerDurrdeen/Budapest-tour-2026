@@ -77,12 +77,12 @@ export function CityGuide() {
         </div>
       </header>
 
-      <main className="mx-auto max-w-lg px-4 py-5">
+      <main className="mx-auto max-w-lg px-4 pt-3 pb-5">
         <Tabs value={activeDayId} onValueChange={handleDayChange}>
           {tourDays.map((day) => (
-            <TabsContent key={day.id} value={day.id} className="mt-0 space-y-5">
+            <TabsContent key={day.id} value={day.id} className="mt-0 space-y-2">
               <Card size="sm" className="overflow-hidden">
-                <CardHeader className="gap-2 pb-0">
+                <CardHeader className="gap-1 py-3">
                   <div className="flex items-center gap-2">
                     <span
                       className="size-2 rounded-full"
@@ -91,8 +91,7 @@ export function CityGuide() {
                     <CardTitle className="font-heading text-base italic">{day.subtitle}</CardTitle>
                   </div>
                   <CardDescription>
-                    {day.stops.length} megálló — koppints egy programra, a térkép
-                    odafókuszál
+                    {day.stops.length} megálló — koppints egy programra, a térkép odafókuszál
                   </CardDescription>
                 </CardHeader>
               </Card>

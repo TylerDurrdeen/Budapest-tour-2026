@@ -89,7 +89,7 @@ export function StopCard({
       <button
         type="button"
         onClick={onSelect}
-        className="mb-4 min-w-0 flex-1 pb-0 text-left last:mb-0"
+        className="mb-2 min-w-0 flex-1 pb-0 text-left last:mb-0"
       >
         <Card
           size="sm"
