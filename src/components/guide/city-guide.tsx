@@ -4,26 +4,22 @@ import { useMemo, useState } from "react";
 import { StopCard } from "@/components/guide/stop-card";
 import { RouteMapDrawer } from "@/components/guide/route-map-drawer";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
-import { ScrollArea } from "@/components/ui/scroll-area";
 import { Separator } from "@/components/ui/separator";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import {
-  accommodation,
-  fixedBookings,
-  practicalTips,
-  tourDays,
-} from "@/lib/tour-data";
+import { accommodation } from "@/lib/tour-data";
+import { useLocale } from "@/lib/i18n/locale-provider";
 import { cn } from "@/lib/utils";
 import { CalendarCheck, Info, MapPinned, Sparkles } from "lucide-react";
 
 export function CityGuide() {
+  const { t, tourDays } = useLocale();
   const [activeDayId, setActiveDayId] = useState(tourDays[1]?.id ?? tourDays[0].id);
   const [selectedStopId, setSelectedStopId] = useState<string | null>(null);
   const [mapOpen, setMapOpen] = useState(true);
 
   const activeDay = useMemo(
     () => tourDays.find((day) => day.id === activeDayId) ?? tourDays[0],
-    [activeDayId],
+    [activeDayId, tourDays],
   );
 
   const handleDayChange = (dayId: string) => {
@@ -102,11 +98,11 @@ export function CityGuide() {
 
         <section className="space-y-3 pb-6">
           <div className="flex items-center gap-2">
-            <CalendarCheck className="text-muted-foreground size-4" />
-            <h2 className="font-heading text-sm font-bold">Fix foglalások</h2>
+            <CalendarCheck className="text-muted-foreground size-4 shrink-0" />
+            <h2 className="font-heading text-sm font-bold">{t.ui.fixedBookings}</h2>
           </div>
           <div className="space-y-2">
-            {fixedBookings.map((booking) => (
+            {t.fixedBookings.map((booking) => (
               <Alert key={booking.title}>
                 <CalendarCheck />
                 <AlertTitle>{booking.title}</AlertTitle>
@@ -123,7 +119,7 @@ export function CityGuide() {
                       rel="noopener noreferrer"
                       className="inline-flex h-8 items-center gap-1.5 rounded-lg bg-emerald-600 px-3 text-xs font-medium text-white hover:bg-emerald-700"
                     >
-                      Jegy megnyitása
+                      {t.ui.openTicket}
                     </a>
                   )}
                 </AlertDescription>
@@ -134,26 +130,29 @@ export function CityGuide() {
 
         <section className="space-y-3 pb-6">
           <div className="flex items-center gap-2">
-            <Sparkles className="text-muted-foreground size-4" />
-            <h2 className="font-heading text-sm font-bold">Hasznos infók</h2>
+            <Sparkles className="text-muted-foreground size-4 shrink-0" />
+            <h2 className="font-heading text-sm font-bold">{t.ui.practicalTips}</h2>
           </div>
-          <ScrollArea className="max-h-52">
-            <div className="space-y-2 pr-3">
-              {practicalTips.map((tip) => (
-                <Alert key={tip}>
-                  <Info />
-                  <AlertDescription>{tip}</AlertDescription>
-                </Alert>
-              ))}
-            </div>
-          </ScrollArea>
+          <ul className="space-y-2">
+            {t.practicalTips.map((tip) => (
+              <li
+                key={tip}
+                className="flex items-start gap-2.5 rounded-lg border bg-card px-3 py-2.5 text-sm shadow-xs"
+              >
+                <Info className="mt-0.5 size-4 shrink-0 text-muted-foreground" />
+                <span className="min-w-0 flex-1 leading-relaxed text-muted-foreground">
+                  {tip}
+                </span>
+              </li>
+            ))}
+          </ul>
         </section>
 
         <Alert>
           <MapPinned />
-          <AlertTitle>Szállás bázis</AlertTitle>
+          <AlertTitle>{t.ui.accommodationTitle}</AlertTitle>
           <AlertDescription>
-            {accommodation.address} — {accommodation.tip}
+            {accommodation.address} — {t.accommodation.tip}
           </AlertDescription>
         </Alert>
       </main>

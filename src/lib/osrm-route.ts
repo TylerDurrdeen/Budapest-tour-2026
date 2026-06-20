@@ -43,8 +43,18 @@ export function planTourRoute(stops: TourStop[]): PlannedRoute {
   };
 }
 
-export function formatDuration(seconds: number): string {
+export function formatDuration(
+  seconds: number,
+  time?: {
+    minutes: (n: number) => string;
+    hoursMinutes: (hours: number, minutes: number) => string;
+  },
+): string {
   const mins = Math.round(seconds / 60);
+  if (time) {
+    if (mins < 60) return time.minutes(mins);
+    return time.hoursMinutes(Math.floor(mins / 60), mins % 60);
+  }
   if (mins < 60) return `${mins} perc`;
   const hours = Math.floor(mins / 60);
   const remainingMins = mins % 60;

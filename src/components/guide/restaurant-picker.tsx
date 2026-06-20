@@ -10,6 +10,7 @@ import {
 } from "@/components/ui/carousel";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import type { RestaurantOption } from "@/lib/tour-data";
+import { useLocale } from "@/lib/i18n/locale-provider";
 import Image from "next/image";
 
 type RestaurantPickerProps = {
@@ -21,6 +22,8 @@ export function RestaurantPicker({
   restaurants,
   showCarousel = true,
 }: RestaurantPickerProps) {
+  const { t } = useLocale();
+
   if (restaurants.length === 0) return null;
 
   const defaultTab = restaurants[0]?.id;
@@ -62,7 +65,7 @@ export function RestaurantPicker({
                       <div className="relative aspect-[16/10] overflow-hidden rounded-lg border bg-muted">
                         <Image
                           src={src}
-                          alt={`${restaurant.name} — ${index + 1}. kép`}
+                          alt={`${restaurant.name} — ${index + 1}. ${t.ui.restaurantImageAlt}`}
                           fill
                           className="object-cover"
                           sizes="(max-width: 512px) 100vw, 512px"
@@ -84,7 +87,7 @@ export function RestaurantPicker({
               <StopActions
                 links={[
                   {
-                    label: "Útvonaltervezés",
+                    label: t.ui.links.directions,
                     href: restaurant.mapsUrl,
                     variant: "directions",
                   },

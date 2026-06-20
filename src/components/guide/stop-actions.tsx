@@ -1,6 +1,7 @@
 "use client";
 
 import type { StopLink, StopLinkVariant } from "@/lib/tour-data";
+import { useLocale } from "@/lib/i18n/locale-provider";
 import { cn } from "@/lib/utils";
 import {
   ExternalLink,
@@ -42,6 +43,7 @@ type StopActionsProps = {
 };
 
 export function StopActions({ links = [], ticketPdf }: StopActionsProps) {
+  const { t } = useLocale();
   const allLinks = [...links];
 
   if (
@@ -49,7 +51,7 @@ export function StopActions({ links = [], ticketPdf }: StopActionsProps) {
     !allLinks.some((link) => link.variant === "ticket")
   ) {
     allLinks.push({
-      label: "Jegy megnyitása",
+      label: t.ui.openTicket,
       href: ticketPdf,
       variant: "ticket",
     });

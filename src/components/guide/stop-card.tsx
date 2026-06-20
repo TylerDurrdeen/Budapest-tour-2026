@@ -6,6 +6,13 @@ import { RestaurantPicker } from "@/components/guide/restaurant-picker";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { Badge } from "@/components/ui/badge";
 import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
+import {
   Card,
   CardContent,
   CardDescription,
@@ -13,8 +20,10 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { type TourStop } from "@/lib/tour-data";
+import { useLocale } from "@/lib/i18n/locale-provider";
 import { cn } from "@/lib/utils";
 import { Clock, Lightbulb } from "lucide-react";
+import Image from "next/image";
 
 type StopCardProps = {
   stop: TourStop;
@@ -33,11 +42,14 @@ export function StopCard({
   isLast,
   onSelect,
 }: StopCardProps) {
+  const { t } = useLocale();
+
   const hasExtraContent =
     Boolean(stop.links?.length) ||
     Boolean(stop.ticketPdf) ||
     Boolean(stop.restaurants?.length) ||
-    Boolean(stop.branches?.length);
+    Boolean(stop.branches?.length) ||
+    Boolean(stop.images?.length);
 
   return (
     <div className="relative flex items-start gap-3">
@@ -109,6 +121,32 @@ export function StopCard({
 
         {hasExtraContent && (
           <div className="mt-2 space-y-3 rounded-lg border bg-background/60 p-3">
+            {stop.images && stop.images.length > 0 && (
+              <Carousel className="mx-auto w-full max-w-full">
+                <CarouselContent>
+                  {stop.images.map((src, imageIndex) => (
+                    <CarouselItem key={src}>
+                      <div className="relative aspect-[16/10] overflow-hidden rounded-lg border bg-muted">
+                        <Image
+                          src={src}
+                          alt={`${stop.title} — ${imageIndex + 1}. ${t.ui.imageAlt}`}
+                          fill
+                          className="object-cover"
+                          sizes="(max-width: 512px) 100vw, 512px"
+                        />
+                      </div>
+                    </CarouselItem>
+                  ))}
+                </CarouselContent>
+                {stop.images.length > 1 && (
+                  <>
+                    <CarouselPrevious className="left-2" />
+                    <CarouselNext className="right-2" />
+                  </>
+                )}
+              </Carousel>
+            )}
+
             {stop.restaurants && stop.restaurants.length > 0 && (
               <RestaurantPicker
                 restaurants={stop.restaurants}

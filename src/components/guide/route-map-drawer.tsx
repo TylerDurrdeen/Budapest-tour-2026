@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
+import { LanguageToggle } from "@/components/language-toggle";
 import { ModeToggle } from "@/components/mode-toggle";
 import { Button } from "@/components/ui/button";
 import {
@@ -20,6 +21,7 @@ import {
   useMap,
 } from "@/components/ui/map";
 import type { TourDay, TourStop } from "@/lib/tour-data";
+import { useLocale } from "@/lib/i18n/locale-provider";
 import {
   formatDistance,
   formatDuration,
@@ -58,6 +60,7 @@ function RouteMapContent({
   selectedStopId,
   onSelectStop,
 }: Pick<RouteMapDrawerProps, "day" | "selectedStopId" | "onSelectStop">) {
+  const { t } = useLocale();
   const [userLocation, setUserLocation] = useState<{
     longitude: number;
     latitude: number;
@@ -168,12 +171,12 @@ function RouteMapContent({
       {plannedRoute.coordinates.length > 1 && (
         <div className="absolute top-2 left-2 rounded-lg border bg-background/95 px-2.5 py-1.5 shadow-sm">
           <p className="text-[10px] font-medium text-muted-foreground">
-            Megállók sorrendje (légvonal)
+            {t.ui.routeOrder}
           </p>
           <div className="mt-0.5 flex items-center gap-3 text-xs font-medium">
             <span className="flex items-center gap-1">
               <Clock className="size-3.5" />
-              ~{formatDuration(plannedRoute.totalDuration)}
+              {formatDuration(plannedRoute.totalDuration, t.ui.time)}
             </span>
             <span className="flex items-center gap-1">
               <Route className="size-3.5" />
@@ -193,6 +196,8 @@ export function RouteMapDrawer({
   open,
   onOpenChange,
 }: RouteMapDrawerProps) {
+  const { t } = useLocale();
+
   return (
     <>
       <Drawer
@@ -207,7 +212,7 @@ export function RouteMapDrawer({
           <DrawerTitle className="sr-only">
             {day.label} · {day.date}
           </DrawerTitle>
-          <DrawerDescription className="sr-only">Útvonal</DrawerDescription>
+          <DrawerDescription className="sr-only">{t.ui.routeSr}</DrawerDescription>
           <div className="min-h-0 flex-1">
             <RouteMapContent
               day={day}
@@ -218,7 +223,7 @@ export function RouteMapDrawer({
         </DrawerContent>
       </Drawer>
 
-      <div className="fixed inset-x-0 bottom-0 z-[60] border-t bg-background/95 px-3 pt-2 pb-[calc(0.5rem+env(safe-area-inset-bottom))] backdrop-blur-sm supports-[backdrop-filter]:bg-background/80">
+      <div className="fixed inset-x-0 bottom-0 z-[9999] isolate border-t bg-background/95 px-3 pt-2 pb-[calc(0.5rem+env(safe-area-inset-bottom))] backdrop-blur-sm supports-[backdrop-filter]:bg-background/80">
         <div className="mx-auto flex max-w-lg items-center gap-2">
           <Button
             size="sm"
@@ -226,8 +231,9 @@ export function RouteMapDrawer({
             onClick={() => onOpenChange(!open)}
           >
             <MapPinned className="size-4" />
-            {open ? "Térkép bezárása" : "Térkép megnyitása"}
+            {open ? t.ui.mapClose : t.ui.mapOpen}
           </Button>
+          <LanguageToggle />
           <ModeToggle />
         </div>
       </div>
