@@ -392,8 +392,8 @@ export function buildTourData(messages: Messages): TourDay[] {
         {
           id: "s-hajo",
           time: "19:00",
-          lng: 19.0492,
-          lat: 47.4965,
+          lng: 19.045398,
+          lat: 47.501788,
           category: "activity" as StopCategory,
           ticketPdf: "/HKE5SKZMIBXPYH2U6A06357R63FZJLZR.pdf",
           links: [
@@ -404,11 +404,11 @@ export function buildTourData(messages: Messages): TourDay[] {
         {
           id: "s-vendeglo",
           time: "20:30",
-          lng: 19.045398,
-          lat: 47.501788,
+          lng: 19.0492,
+          lat: 47.4965,
           category: "food" as StopCategory,
           links: [
-            link("directions", { lat: 47.501788, lng: 19.045398 }, "directions", labels),
+            link("directions", { lat: 47.4965, lng: 19.0492 }, "directions", labels),
           ],
         },
         {
