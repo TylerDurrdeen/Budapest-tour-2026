@@ -1,5 +1,8 @@
 "use client";
 
+import { StopActions } from "@/components/guide/stop-actions";
+import { StopBranches } from "@/components/guide/stop-branches";
+import { RestaurantPicker } from "@/components/guide/restaurant-picker";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { Badge } from "@/components/ui/badge";
 import {
@@ -9,12 +12,9 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import {
-  type StopCategory,
-  type TourStop,
-} from "@/lib/tour-data";
+import { type TourStop } from "@/lib/tour-data";
 import { cn } from "@/lib/utils";
-import { Lightbulb } from "lucide-react";
+import { Clock, Lightbulb } from "lucide-react";
 
 type StopCardProps = {
   stop: TourStop;
@@ -33,9 +33,14 @@ export function StopCard({
   isLast,
   onSelect,
 }: StopCardProps) {
+  const hasExtraContent =
+    Boolean(stop.links?.length) ||
+    Boolean(stop.ticketPdf) ||
+    Boolean(stop.restaurants?.length) ||
+    Boolean(stop.branches?.length);
+
   return (
     <div className="relative flex items-start gap-3">
-      {/* Timeline column */}
       <div className="flex flex-col items-center self-stretch pt-3">
         <button
           type="button"
@@ -55,7 +60,6 @@ export function StopCard({
         )}
       </div>
 
-      {/* Card */}
       <div className={cn("min-w-0 flex-1", !isLast && "mb-3")}>
         <button type="button" onClick={onSelect} className="w-full text-left">
           <Card
@@ -71,11 +75,17 @@ export function StopCard({
             }
           >
             <CardHeader className="gap-2 pb-0">
-            <div className="flex items-center gap-2">
-              <Badge variant="outline" className="font-mono text-[10px]">
-                {stop.time}
-              </Badge>
-            </div>
+              <div className="flex flex-wrap items-center gap-2">
+                <Badge variant="outline" className="font-mono text-[10px]">
+                  {stop.time}
+                </Badge>
+                {stop.duration && (
+                  <Badge variant="secondary" className="gap-1 text-[10px]">
+                    <Clock className="size-3" />
+                    {stop.duration}
+                  </Badge>
+                )}
+              </div>
               <CardTitle className="font-heading font-bold">{stop.title}</CardTitle>
               {stop.description && (
                 <CardDescription className="leading-relaxed">
@@ -85,7 +95,7 @@ export function StopCard({
             </CardHeader>
 
             {stop.tip && (
-              <CardContent className="pt-3">
+              <CardContent className="pt-3 pb-0">
                 <Alert className="border-amber-200/60 bg-amber-50/80 dark:border-amber-900/40 dark:bg-amber-950/30">
                   <Lightbulb className="text-amber-600 dark:text-amber-400" />
                   <AlertDescription className="text-amber-900 dark:text-amber-100">
@@ -96,6 +106,25 @@ export function StopCard({
             )}
           </Card>
         </button>
+
+        {hasExtraContent && (
+          <div className="mt-2 space-y-3 rounded-lg border bg-background/60 p-3">
+            {stop.restaurants && stop.restaurants.length > 0 && (
+              <RestaurantPicker
+                restaurants={stop.restaurants}
+                showCarousel={stop.showRestaurantCarousel ?? true}
+              />
+            )}
+
+            {stop.branches && stop.branches.length > 0 && (
+              <StopBranches branches={stop.branches} />
+            )}
+
+            {(stop.links?.length || stop.ticketPdf) && (
+              <StopActions links={stop.links} ticketPdf={stop.ticketPdf} />
+            )}
+          </div>
+        )}
       </div>
     </div>
   );

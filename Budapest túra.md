@@ -1,125 +1,99 @@
 # Budapest túra — 4 lány hosszú hétvégéje
 
 **Időpont:** 2026. június 26. (péntek) – 28. (vasárnap)
-**Szállás:** Deák Ferenc tér / Király utca környéke (központi, minden gyalog elérhető)
+**Szállás:** Asbóth utca 14, Budapest 1075
 **Indulás haza:** jún. 28. vasárnap, Liszt Ferenc reptér, gép 11:35-kor
+
+---
+
+## Fix foglalások
+
+| Program | Időpont | Hely / részletek |
+|---|---|---|
+| **VR túra** | **2026. jún. 27., 11:00** | A VR-utazás a 1013 Budapest, Lánchíd utca 23. alatti irodánál kezdődik — ~90 perc, ~1,8 km. Jegy: `26596-2026.pdf` |
+| **Gróf Széchenyi rendezvényhajó** | **2026. jún. 27., 19:00** | Cruise without drinks. Foglalás: **Nagy Dániel**. ~90 perc. Jegy: `HKE5SKZMIBXPYH2U6A06357R63FZJLZR.pdf` |
 
 ---
 
 ## Előkészület / hasznos infók
 
 - **BKK 72 órás bérlet** mindenkinek (péntek estétől vasárnap reggelig fedi a túrát) — metró, villamos, busz, HÉV.
-- A **100E reptéri busz** NEM része a bérletnek, külön jegy kell hozzá (jegyautomatából a metrónál vehető).
-- A **Király utca / Deák tér** sugár szuper központi — a legtöbb program **gyalog 10–20 perc**.
-- Hajóra **online érdemes foglalni előre** (Legenda, Duna Bella, Silverline) — naplemente körüli járatok hamar megtelnek júniusban.
-- Júniusban Budapesten a nap **~20:50 körül nyugszik** → a 20:30-as hajó pont a kék órára / kivilágításra esik. 🚢
+- A **100E reptéri busz** NEM része a bérletnek, külön jegy kell hozzá.
+- Az **Asbóth utca 14** (1075) központi — a legtöbb program **gyalog 10–20 perc**.
+- **N2 nosztalgia villamos** jún. 27-én (Bengáli jármű) — külön nosztalgia-jegy kell (600 Ft), BKK bérlet nem elég.
+- Júniusban a nap **~20:50 körül nyugszik** → a 19:00-as hajó naplemente fényben indul.
 
 ---
 
-## Június 26. — Péntek (érkezés, lazítós este)
+## Június 26. — Péntek (érkezés, Kopaszi gát, esti program)
 
 | Idő | Program |
 |---|---|
-| **18:00** | Indulás Balatonalmádiból (vonat → Déli pu., vagy autó M7-en) |
-| ~19:30–20:00 | Érkezés Budapestre |
-| 20:00 | **Déli pu.-ról M2 (piros) metró → Deák Ferenc tér** (4 megálló, ~10 perc) |
-| 20:15 | Check-in, gyors becuccolás, sminkjavítás |
-| **21:00** | **Vacsora a Gozsdu udvarban** (5 perc séta a szállástól, Király u. felőli vége) — pl. *Spíler Bistro*, *Mazel Tov*, vagy *Sushi Sei* |
-| 22:30 | **Romkocsma kör** a Kazinczy utcában — *Szimpla Kert* (klasszikus), *Mazel Tov*, *Kőleves Kert* |
-| ~01:00 | Haza séta (5 perc) — minden a szállás körül van |
+| **18:00** | **Déli pályaudvar — érkezés** |
+| 18:30 | **M2 metró → szállás** (Déli pu. → Deák/Blaha → gyalog Asbóth u.) |
+| 19:00 | **Asbóth utca 14 — check-in** · [Airbnb](https://www.airbnb.hu/rooms/767256276511340819) |
+| 20:00 | **Kopaszi gát — vacsora** — VakVarjú Beach Bistro, Veranda, Le Bistro, Kopaszikert |
+| 21:30 | **Virtu — egy ital** |
+| 22:30 | **Esti program — választható:** A) Hozzánk — ital a szálláson · B) Hadik — Bartókon |
 
-> 💡 **Tipp:** péntek este csak ráhangoló, ne legyen kemény — szombaton sok program lesz.
+> 💡 Péntek este csak ráhangoló — szombaton sok program fix időpontban.
 
 ---
 
-## Június 27. — Szombat (a nagy nap + hajó)
-
-### Délelőtt — Pest, Bazilika, Lánchíd
+## Június 27. — Szombat (VR, Vár, nosztalgia villamos, hajó)
 
 | Idő | Program |
 |---|---|
-| 08:30 | Ébresztő, reggeli kávé |
-| 09:00 | **Reggeli az *Espresso Embassy*-ben** (Arany János u., 5 perc séta) vagy *Stika* a Dob utcában |
-| 10:00 | **Szent István Bazilika** — kupola panoráma (kb. 1500 Ft, csodás 360°-os kilátás) |
-| 11:00 | Séta a **Lánchídhoz** a Zrínyi utcán át (Insta-aranybánya!) |
-| 11:30 | **Átkelés a Lánchídon** gyalog |
-
-### Délben — Budai Vár
-
-| Idő | Program |
-|---|---|
-| 12:00 | **Budavári Sikló** fel a Várhegyre (rövid, de hangulatos – kb. 1500 Ft egy út) |
-| 12:30 | **Halászbástya + Mátyás-templom + Sándor-palota** környéke — fotózás, kávé a Ruszwurmban ha bírjátok a sort |
-| 14:00 | **Ebéd a Várban** — pl. *Pierrot* (hangulatos), vagy *Pest-Buda Bistro* |
-
-### Délután — Pest-oldal, nosztalgia villamos
-
-| Idő | Program |
-|---|---|
-| 15:30 | Lefelé a Várból a **Várkert Bazárhoz** (gyalog, lefelé könnyű) |
-| 16:00 | **2-es villamos = a „panoráma villamos"** — a Duna mentén megy végig, hivatalosan is a világ egyik legszebb villamosvonala. ⭐ |
-| ~ | **Tipp:** szombatonként júniusban gyakran közlekedik a **Nosztalgia villamos (M28A vagy különjárat)** — fa belsős, régi BKV szerelvény. Indulás általában Deák / Astoria környékéről. Érdemes a [bkv.hu](https://bkv.hu) menetrendet ránézni indulás előtt. |
-| 16:30 | Leszállás **Fővám térnél** → **Nagyvásárcsarnok** (emeleten lángos, ajándék-shopping) |
-| 17:30 | Séta visszafelé a Váci utcán → **Vörösmarty tér → Deák tér** |
-| 18:00 | Vissza a szállásra — **átöltözés, smink, hajó-outfit** ✨ |
-
-### Este — HAJÓ + romantika
-
-| Idő | Program |
-|---|---|
-| 19:30 | **Light vacsora vagy aperitif** indulás előtt — pl. *High Note SkyBar* (Aria Hotel, Bazilika mellett) egy koktélra a hajó előtt |
-| 20:00 | Séta a kikötőhöz — kb. 10–15 perc a **Vigadó tér / Petőfi tér környéki kikötőkhöz** |
-| **20:30** | **🚢 HAJÓKIRÁNDULÁS** — naplemente + kivilágított Parlament + Lánchíd. Időtartam általában 1–1,5 óra. |
-| 22:00 | Vissza séta a parton → **Andrássy út kivilágítva**, vagy egy utolsó ital a Király utcai bárokban (*Doblo*, *Boutiq'Bar*) |
-| ~00:00 | Haza |
+| 09:00 | **Cafe Brunch Budapest — Anker** (Anker köz 2-4) |
+| 10:15 | Séta VR irodához — Lánchíd utca 23. |
+| **11:00** | **VR túra** (~90p) |
+| 12:30 | **Halászbástya** (~60p) |
+| 13:30 | **Ebéd a Várban** — Jamie's Oliver · 21 Hungarian Kitchen · Riso Restaurant |
+| 15:30 | **N2 nosztalgia villamos** — Jászai Mari tér → Országház ([BKK menetrend](https://bkk.hu/utazasi-informaciok/kozossegi-kozlekedes/kulonleges-jaratok-nosztalgiakozlekedes/nosztalgiajaratok/nosztalgiajaratok-budapesten/#rendszeres)) |
+| 16:15 | **Országház** — fotózás a partról |
+| 16:45 | **Retro Lángos Büfé** |
+| 17:15 | **Szent István Bazilika** (gyors) |
+| 18:00 | **Szállás — átöltözés** |
+| **19:00** | **Gróf Széchenyi rendezvényhajó** (~90p) — Nagy Dániel |
+| 20:30 | **Ikonikus magyar vendéglő** |
+| 21:00 | **Esti opció:** A) Pihenés szálláson · B) Gozsdu udvar koktélozás |
 
 ---
 
 ## Június 28. — Vasárnap (indulás, szoros időzítés!)
 
-> ⏰ **Gép indul 11:35-kor → reptéren legyetek 09:35-re (2 órával előtte).**
+> ⏰ **Gép indul 11:35-kor → reptéren legyetek 09:35-re (2 órával előtt).**
 
 | Idő | Program |
 |---|---|
 | 07:00 | Ébresztő, csomag bezár |
-| 07:30 | **Gyors reggeli** a szálláson vagy *Madal Café* (Hold u., nyit 7:30-kor) |
+| 07:30 | **Madal Café — reggeli** (Király u. 7, vasárnap nyit 8:30) |
 | 08:15 | Kijelentkezés |
-| **08:30** | **100E reptéri busz indul a Deák Ferenc térről** (a Kálvin/Erzsébet tér felőli megállóból, ~5–10 percenként jár) — menetidő ~35–45 perc |
-| 09:15–09:30 | **Érkezés Liszt Ferenc reptér Terminál 2** |
-| 09:35 | Check-in / poggyászfeladás |
-| 10:00 | Biztonsági ellenőrzés |
-| 10:30 | Beszállókapu — utolsó kávé / shopping a duty-free-ben |
+| **08:30** | **100E reptéri busz** — Deák Ferenc tér vagy Blaha Lujza tér |
+| 09:30 | **Liszt Ferenc reptér T2** — check-in |
 | **11:35** | ✈️ **Felszállás** |
 
-> ⚠️ **Backup:** ha lekésnétek a 100E-t, **taxi** Deák tértől a reptérig ~7000–9000 Ft, ~30 perc reggel.
+> ⚠️ Backup: taxi a szállástól ~7000–9000 Ft, ~30 perc reggel.
 
 ---
 
 ## Csomagolási mini-checklist
 
-- [ ] Személyi + útlevél (a repülőhöz, EU-n belül is jobb mindkettő)
+- [ ] Személyi + útlevél
 - [ ] Repjegy nyomtatva / mobilban
-- [ ] BKK bérlet (vehető a metróállomáson)
-- [ ] Kényelmes cipő (rengeteg gyaloglás!)
-- [ ] Egy szép szett a hajóra + Bazilikára
-- [ ] Powerbank — sok fotó lesz
-- [ ] Esőkabát/esernyő (júniusban előfordulhat zápor)
-- [ ] Hajó-foglalás visszaigazolás
+- [ ] BKK bérlet + nosztalgia-jegy (szombat)
+- [ ] Kényelmes cipő + powerbank
+- [ ] VR jegy PDF (`26596-2026.pdf`)
+- [ ] Hajó jegy PDF (`HKE5SKZMIBXPYH2U6A06357R63FZJLZR.pdf`)
 
 ---
 
 ## Térkép-logika röviden
 
 ```
-Szállás (Deák Ferenc tér / Király u.)
-   ├── 5 perc gyalog → Gozsdu udvar, romkocsmák
-   ├── 5 perc gyalog → Bazilika
-   ├── 10 perc gyalog → Lánchíd / Duna-part / hajókikötő
-   ├── 15 perc gyalog → Parlament
-   ├── 2-es villamos a parton → Vásárcsarnok, Várkert Bazár
-   ├── M2 metró → Déli pu. (érkezés)
-   └── 100E busz → Reptér (indulás)
+Szállás (Asbóth utca 14, 1075)
+   ├── ~10 perc gyalog → belváros, Deák tér
+   ├── ~15 perc → VR iroda (Lánchíd utca 23.)
+   ├── metró/tram → Kopaszi gát, Vár, Parlament
+   └── 100E busz (Deák tér / Blaha) → Reptér
 ```
-
-**Minden a központban van — szinte semmihez sem kell taxi.** 🚶‍♀️🚶‍♀️🚶‍♀️🚶‍♀️
-
